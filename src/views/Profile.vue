@@ -83,7 +83,48 @@
       </div>
     </div>
     <div class="container">
-      <div class="profile__section"></div>
+      <div class="profile__section">
+        <div class="profile__title shadow">
+          <h3>[ Bảng chiến tích ]</h3>
+          <div class="title__item">
+            <span class="sub__title"
+              ><i class="uil uil-edit icon__title"></i>Đánh giá</span
+            >
+            <span class="title__item-quantity">0</span>
+          </div>
+          <div class="title__item">
+            <span class="sub__title"
+              ><i class="uil uil-discord icon__title"></i>Thảo luận</span
+            >
+            <span class="title__item-quantity">0</span>
+          </div>
+          <div class="title__item">
+            <span class="sub__title"
+              ><i class="uil uil-heart icon__title"></i>Được thích</span
+            >
+            <span class="title__item-quantity">0</span>
+          </div>
+          <div class="title__item">
+            <span class="sub__title"
+              ><i class="uil uil-rss icon__title"></i>Người theo giõi</span
+            >
+            <span class="title__item-quantity">0</span>
+          </div>
+          <div class="title__item">
+            <span class="sub__title"
+              ><i class="uil uil-calendar-alt icon__title"></i>Ngày tham
+              gia</span
+            >
+            <span class="title__item-quantity">0</span>
+          </div>
+        </div>
+        <div class="list__rate-title">
+          <div class="rate__empty">
+            <img class="empty" src="@/assets/images/empty.png" alt="" />
+            <span>Opps, chưa có bài đánh giá nào!</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -214,7 +255,7 @@ export default {
   color: #000;
   font-size: 18px;
 }
-.nav__item:hover{
+.nav__item:hover {
   color: red;
 }
 .profile__nav ul li button {
@@ -250,15 +291,68 @@ export default {
 .mr {
   margin-right: 14px;
 }
-.facebook:hover{
+.facebook:hover {
   background: blue;
   color: #fff;
 }
-.github:hover{
+.github:hover {
   background: red;
   color: #fff;
 }
-.option:hover{
+.option:hover {
   background: rgb(224, 222, 222);
+}
+.profile__section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.profile__title {
+  grid-column: 1/2;
+  border-radius: 10px;
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+}
+.profile__title h3 {
+  text-align: center;
+}
+.title__item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.title__item-quantity {
+  padding: 0 10px;
+  border-radius: 6px;
+  background: #efefef;
+}
+.sub__title {
+  font-size: 16px;
+  font-weight: bold;
+}
+.icon__title {
+  font-size: 18px;
+  margin-right: 6px;
+}
+.list__rate-title {
+  grid-column: 2/4;
+}
+.list__rate-title div {
+  max-height: 232px;
+}
+.rate__empty {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.empty {
+  height: 180px;
+  margin-bottom: 20px;
+}
+.list__rate-title span {
+  font-weight: bold;
+  font-size: 24px;
 }
 </style>
