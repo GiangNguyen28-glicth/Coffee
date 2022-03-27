@@ -6,6 +6,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "home" */ "../views/Home.vue"),
   },
   {
+    path: "/profile",
+    name: "profile-router",
+    component: () => import(/* webpackChunkName: "home" */ "../views/Profile.vue"),
+  },
+  {
     path: "/place",
     name: "place-router",
     component: () => import(/* webpackChunkName: "home" */ "../views/Place.vue"),
