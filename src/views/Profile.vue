@@ -55,7 +55,7 @@
           </ul>
           <ul>
             <li>
-              <button><i class="uil uil-pen edit__icon"></i>Chỉnh sửa</button>
+              <button @click="edit"><i class="uil uil-pen edit__icon"></i>Chỉnh sửa</button>
             </li>
             <li>
               <router-link
@@ -136,14 +136,19 @@ import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import { ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
+import { useRouter } from "vue-router";
 export default {
   name: "Profile",
   components: { Header, Footer },
   setup() {
     const dataImage = ref(null);
     const chooseImage = ref(null);
+    const router=useRouter();
     const openFile = () => {
       chooseImage.value.click();
+    };
+    const edit = ()=>{
+      router.push({name:"edit-router",params:{}})
     };
     onMounted(() => {
       dataImage.value =
@@ -153,6 +158,7 @@ export default {
       chooseImage,
       openFile,
       dataImage,
+      edit
     };
   },
 };

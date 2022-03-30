@@ -4,7 +4,7 @@
     <ul class="header__option">
       <li class="mr-16">
         <i class="uil uil-bright header__icons-size"> </i>
-        <router-link class="nav__item" :to="{ name: 'discount-router', param: {} }"
+        <router-link class="nav__item" :to="{ name: 'place-router', param: {} }"
           >Khám phá</router-link
         >
         <div class="thick"></div>

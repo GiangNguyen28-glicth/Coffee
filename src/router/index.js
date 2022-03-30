@@ -11,6 +11,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "home" */ "../views/Profile.vue"),
   },
   {
+    path: "/profile/edit",
+    name: "edit-router",
+    component: () => import(/* webpackChunkName: "home" */ "../views/Edit.vue"),
+  },
+  {
     path: "/place",
     name: "place-router",
     component: () => import(/* webpackChunkName: "home" */ "../views/Place.vue"),
