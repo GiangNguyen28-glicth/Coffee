@@ -21,6 +21,8 @@
       </div>
       <ListImage />
       <PlaceInfo />
+      <PlaceBenefit />
+      <ReviewPlace />
     </div>
   </div>
   <Footer />
@@ -31,9 +33,11 @@ import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import ListImage from "@/components/Place/ListImage.vue";
 import PlaceInfo from "@/components/Place/PlaceInfo.vue";
+import PlaceBenefit from "@/components/Place/PlaceBenefit.vue";
+import ReviewPlace from "@/components/Place/ReviewPlace.vue";
 export default {
   name: "Place",
-  components: { Header, Footer,ListImage,PlaceInfo },
+  components: { Header, Footer,ListImage,PlaceInfo,PlaceBenefit,ReviewPlace },
   setup() {},
 };
 </script>

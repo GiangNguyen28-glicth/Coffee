@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="detail__information shadow boder__radius">
-        <h3 class="subtitle">Thông tin chi tiết</h3>
+        <h3 class="sub__title">Thông tin chi tiết</h3>
         <div class="list__info">
           <div
             class="info__title"
@@ -37,7 +37,18 @@
           ></div>
         </div>
       </div>
-      <div class="detail__map shadow boder__radius"></div>
+      <div class="detail__map shadow boder__radius">
+        <h3 class="sub__title">Địa điểm</h3>
+        <div class="image__map">
+          <img src="@/assets/images/map/map.png" alt="" />
+          <div class="road__map shadow boder__radius">
+            <i class="uil uil-directions icon__direction"></i>
+            <router-link :to="{ name: 'home-router', param: {} }"
+              >Số 10 , Bình Dương</router-link
+            >
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -178,7 +189,27 @@ export default {
 .info__title >>> .time {
   font-size: 20px;
 }
-.info__title >>>.menu{
-    color: blue;
+.info__title >>> .menu {
+  color: blue;
+}
+.image__map {
+  margin-top: 4px;
+}
+.road__map {
+  position: absolute;
+  bottom: 10%;
+  background: #fff;
+  left: 30%;
+  padding: 6px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.image__map {
+  position: relative;
+}
+.icon__direction {
+  font-size: 22px;
+  padding-right: 6px;
 }
 </style>
