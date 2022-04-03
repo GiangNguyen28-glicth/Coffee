@@ -23,7 +23,7 @@ const routes = [
   {
     path: "/search",
     name: "search-router",
-    component: () => import(/* webpackChunkName: "home" */ "../views/Edit.vue"),
+    component: () => import(/* webpackChunkName: "home" */ "../views/Search.vue"),
   },
   {
     path: "/review",
@@ -34,6 +34,11 @@ const routes = [
     path: "/discount",
     name: "discount-router",
     component: () => import(/* webpackChunkName: "home" */ "../views/Discount.vue"),
+  },
+  {
+    path: "/explore",
+    name: "explore-router",
+    component: () => import(/* webpackChunkName: "home" */ "../views/Explore.vue"),
   },
   {
     path: "/:pathMath(.*)*",

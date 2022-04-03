@@ -101,3 +101,6 @@ hr {
 .hidden{
     display: none;
 }
+.icon__size24{
+    font-size: 24px;
+}
