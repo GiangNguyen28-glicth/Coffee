@@ -101,6 +101,9 @@ hr {
 .hidden{
     display: none;
 }
+.show{
+    display: block;
+}
 .icon__size24{
     font-size: 24px;
 }

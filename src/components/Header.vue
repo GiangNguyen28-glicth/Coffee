@@ -1,17 +1,23 @@
 <template>
-  <div class="header">
-    <img src="@/assets/images/logo.jpg" class="header__image" alt="" />
+  <div class="header" ref="header">
+    <router-link :to="{ name: 'home-router', param: {} }">
+      <img src="@/assets/images/logo.jpg" class="header__image" alt="" />
+    </router-link>
     <ul class="header__option">
       <li class="mr-16">
         <i class="uil uil-bright header__icons-size"> </i>
-        <router-link class="nav__item" :to="{ name: 'explore-router', param: {} }"
+        <router-link
+          class="nav__item"
+          :to="{ name: 'explore-router', param: {} }"
           >Khám phá</router-link
         >
         <div class="thick"></div>
       </li>
       <li>
         <i class="uil uil-gift header__icons-size"></i>
-        <router-link class="nav__item" :to="{ name: 'discount-router', param: {} }"
+        <router-link
+          class="nav__item"
+          :to="{ name: 'discount-router', param: {} }"
           >Khuyến mãi</router-link
         >
         <div class="thick"></div>
@@ -24,7 +30,7 @@
           >Viết Review</router-link
         >
       </li>
-      <li>
+      <li @click="sendLogin">
         <i class="uil uil-signin header__icons"></i>
         <h3>Đăng nhập</h3>
       </li>
@@ -33,10 +39,24 @@
 </template>
 
 <script>
+import { ref } from '@vue/reactivity';
 export default {
   name: "Header",
-  setup() {
-    return {};
+  props:['isLogin'],
+  setup(props,{emit}) {
+    const header=ref(null);
+    const handleWidth = ()=>{
+      console.log("Width :",window.innerWidth);
+      console.log("Heitgh :",window.innerHeight);
+    }
+    window.addEventListener('resize',handleWidth)
+    const sendLogin = ()=>{
+      const temp = !props.isLogin;
+      emit("changeStatusLogin",temp);
+    }
+    return {
+      sendLogin,header
+    };
   },
 };
 </script>
@@ -52,9 +72,12 @@ export default {
   box-shadow: 0 0 10px rgb(0 0 0 / 30%);
   z-index: 10;
   background-color: #fff;
+  overflow: hidden;
+}
+.header > a {
+  grid-column: 2;
 }
 .header__image {
-  grid-column: 2;
   display: block;
   height: 100%;
   justify-self: center;
@@ -122,7 +145,7 @@ export default {
   color: #fff;
   margin-right: 4px;
 }
-.nav__item{
+.nav__item {
   color: black;
   font-weight: 500;
   font-size: 16px;

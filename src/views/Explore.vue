@@ -6,8 +6,7 @@
         <Posts />
       </div>
       <div class="explore__menu">
-        <UserPositive />
-        <HighlightLocation />
+        <ExploreBox />
       </div>
     </div>
   </div>
@@ -17,12 +16,11 @@
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import UserPositive from "@/components/Explore/UserPositive.vue";
-import HighlightLocation from "@/components/Explore/HighlightLocation.vue";
 import Posts from "@/components/Explore/Posts.vue";
+import ExploreBox from "@/components/Explore/ExploreBox.vue";
 export default {
   name: "Explore",
-  components: { UserPositive, HighlightLocation, Posts, Footer, Header },
+  components: { Posts, Footer, Header,ExploreBox },
   setup() {
     return {};
   },
@@ -36,9 +34,9 @@ export default {
   gap: 20px;
 }
 .posts__container {
-    grid-column: 1/3;
+  grid-column: 1/3;
 }
-.explore__menu{
-    grid-column: 3/4;
+.explore__menu {
+  grid-column: 3/4;
 }
 </style>

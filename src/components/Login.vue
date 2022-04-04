@@ -1,5 +1,5 @@
 <template>
-  <div class="model__login">
+  <div class="model__login" @click="closeLogin($event)">
     <div class="model__login-form">
       <div class="container__login">
         <form class="login-form">
@@ -9,10 +9,23 @@
             <input class="login__input" type="text" name="" id="username" />
           </div>
           <div class="login__input-password">
-            <i class="uil uil-eye form__icon eye__open"></i>
-            <i class="uil uil-eye-slash form__icon eye__close"></i>
+            <i
+              class="uil uil-eye form__icon eye__open"
+              :class="{ hiddenIcon: !isShowPassword }"
+              @click="changeStatusPassword"
+            ></i>
+            <i
+              class="uil uil-eye-slash form__icon eye__close"
+              :class="{ hiddenIcon: isShowPassword }"
+              @click="changeStatusPassword"
+            ></i>
             <label class="login__label" for="password">Mật khẩu</label>
-            <input class="login__input" type="password" name="" id="password" />
+            <input
+              class="login__input"
+              type="password"
+              id="password"
+              ref="password"
+            />
           </div>
           <p class="login__recovery">Recovery Password</p>
           <button type="submit" class="login__button">Đăng nhập</button>
@@ -32,7 +45,7 @@
         </p>
       </div>
       <div class="login__image">
-        <i class="uil uil-times-circle login__close"></i>
+        <i class="uil uil-times-circle login__close" @click="sendLogin"></i>
         <img class="login__image" src="@/assets/images/coffe.png" alt="" />
       </div>
     </div>
@@ -40,10 +53,38 @@
 </template>
 
 <script>
+import { ref } from "@vue/reactivity";
 export default {
   name: "Login",
-  setup() {
-    return {};
+  props: ["isLogin"],
+  setup(props, { emit }) {
+    const isShowPassword = ref(false);
+    const password = ref(null);
+    const changeStatusPassword = () => {
+      isShowPassword.value = !isShowPassword.value;
+      password.value = isShowPassword.value
+        ? password.value.setAttribute("type", "text")
+        : password.value.setAttribute("type", "password");
+    };
+    // =============================
+    const sendLogin = () => {
+      const temp = !props.isLogin;
+      emit("changeStatusLogin", temp);
+    };
+    const closeLogin = (event) => {
+      if (event.target === event.currentTarget) {
+        const temp = !props.isLogin;
+        emit("changeStatusLogin", temp);
+      }
+    };
+    // =============================
+    return {
+      sendLogin,
+      closeLogin,
+      isShowPassword,
+      changeStatusPassword,
+      password,
+    };
   },
 };
 </script>
@@ -55,7 +96,7 @@ export default {
   width: 100%;
   height: 100%;
   top: 0;
-  z-index: 2;
+  z-index: 10000;
 }
 
 .model__login-form {
@@ -109,7 +150,7 @@ export default {
   margin-top: 12px;
 }
 .eye__close {
-  display: none;
+  display: block;
   position: absolute;
   right: 10%;
   top: 45%;
@@ -197,20 +238,22 @@ export default {
   object-fit: cover;
   border-radius: 8px;
 }
-.login__image{
+.login__image {
   position: relative;
 }
-.login__close{
+.login__close {
   position: absolute;
   font-size: 32px;
   color: #fff;
   z-index: 3;
   right: 0;
 }
-.login__close:hover{
+.login__close:hover {
   cursor: pointer;
-  opacity: 0.6; padding: 12px 24px;
+  opacity: 0.6;
   border-radius: 6px;
-  background: red;
+}
+.hiddenIcon {
+  display: none;
 }
 </style>
